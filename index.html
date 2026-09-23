@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IR Curso - 2ª Fase OAB Direito Constitucional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #B34760;
+            --color-primary-dark: #8C3049;
+            --color-accent: #B34760;
+            --color-bg: #FFFFFF;
+            --color-surface: #FBF1F3;
+            --color-text: #2B171B;
+            --color-text-muted: #6E525A;
+            --radius: 16px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,.04);
+            --shadow-md: 0 4px 24px rgba(0,0,0,.06);
+            --font-display: "DM Serif Display", serif;
+            --font-body: "Nunito Sans", sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            background: var(--color-bg);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--color-text);
+        }
+
+        h1 {
+            font-size: clamp(2.25rem, 5vw, 3.75rem);
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.25rem;
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 0;
+            }
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-bg) 100%);
+            padding: 3rem 0 5rem;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            text-align: center;
+        }
+
+        .hero-headline {
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subheadline {
+            font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero-authority {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            margin: 2.5rem 0;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.125rem 2.5rem;
+            font-size: 1.125rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all .2s ease;
+            font-family: var(--font-body);
+            cursor: pointer;
+            border: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: white;
+            box-shadow: 0 4px 16px rgba(179, 71, 96, .3);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(179, 71, 96, .4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-surface);
+        }
+
+        .price-tag {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 1.5rem 2rem;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+        }
+
+        .price-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            font-family: var(--font-body);
+        }
+
+        .price-installment {
+            font-size: 1rem;
+            color: var(--color-text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .section-alt {
+            background: var(--color-surface);
+        }
+
+        .pain-points {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .pain-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .pain-list li {
+            font-size: 1.125rem;
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .pain-list li::before {
+            content: "❌";
+            position: absolute;
+            left: 0;
+        }
+
+        .for-who {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .for-who-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+        }
+
+        .for-who-card.not-for {
+            background: var(--color-surface);
+        }
+
+        .for-who-card h3 {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .for-who-card ul {
+            list-style: none;
+        }
+
+        .for-who-card li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.75rem;
+            position: relative;
+            color: var(--color-text-muted);
+        }
+
+        .for-who-card.is-for li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .for-who-card.not-for li::before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: var(--color-text-muted);
+            font-weight: 700;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            transition: all .2s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0,0,0,.1);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.375rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .benefit-card p {
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+
+        .stack-value {
+            max-width: 700px;
+            margin: 3rem auto 0;
+        }
+
+        .stack-item {
+            background: white;
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.25rem;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--color-primary);
+            transition: all .2s ease;
+        }
+
+        .stack-item:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .stack-item h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-primary);
+        }
+
+        .stack-item p {
+            color: var(--color-text-muted);
+            font-size: 0.975rem;
+        }
+
+        .objections {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .objection-item {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 1.5rem;
+        }
+
+        .objection-item h3 {
+            font-size: 1.375rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .objection-item p {
+            color: var(--color-text-muted);
+            line-height: 1.7;
+        }
+
+        .guarantee {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+        }
+
+        .guarantee-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .guarantee h3 {
+            margin-bottom: 1rem;
+        }
+
+        .guarantee p {
+            color: var(--color-text-muted);
+            font-size: 1.0625rem;
+        }
+
+        .faq {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.25rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-item h4 {
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+            font-family: var(--font-body);
+            font-weight: 700;
+        }
+
+        .faq-item p {
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+
+        .cta-final {
+            text-align: center;
+            background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-bg) 100%);
+            padding: 5rem 0;
+        }
+
+        .cta-final h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta-final p {
+            font-size: 1.125rem;
+            color: var(--color-text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .microcopy {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .mobile-cta-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 -4px 16px rgba(0,0,0,.1);
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-cta-bar {
+                display: block;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--color-text-muted);
+            margin-top: 1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-headline">Domine a 2ª Fase de Constitucional com Método Prático e Aprovado pela FGV</h1>
+                    <p class="hero-subheadline">Técnicas de identificação de peças, estruturas prontas no padrão do espelho de correção e método de redação otimizado para maximizar sua pontuação.</p>
+                    <p class="hero-authority">Curso preparatório desenvolvido especificamente para os critérios de correção da FGV</p>
+                    
+                    <div class="price-tag">
+                        <div class="price-value">R$ 829,90</div>
+                        <div class="price-installment">ou 12x de R$ 85,83</div>
+                    </div>
+
+                    <div class="cta-group">
+                        <a href="https://go.hotmart.com/A107736612D?dp=1" class="btn btn-primary" data-track="cta-principal">Quero Começar Agora</a>
+                        <a href="https://go.hotmart.com/A107736612D" class="btn btn-secondary" data-track="cta-secundario">Quero Conhecer Mais o Produto</a>
+                    </div>
+                </div>
+
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/uMO9uQl0ZKw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt">
+        <div class="container">
+            <div class="pain-points">
+                <h2>Você Sabe Que o Tempo Está Passando...</h2>
+                <ul class="pain-list">
+                    <li>Você estuda teoria há meses, mas trava na hora de escrever a peça profissional do jeito que a FGV espera</li>
+                    <li>Já tentou resolver peças passadas, mas nunca tem certeza se está seguindo a estrutura certa para pontuar no espelho de correção</li>
+                    <li>Sente que está perdendo tempo com preparação genérica, sem foco no que realmente é cobrado na 2ª fase de Constitucional</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>Este Curso É Para Você Se...</h2>
+            </div>
+            <div class="for-who">
+                <div class="for-who-card is-for">
+                    <h3>✅ É Para Você Se:</h3>
+                    <ul>
+                        <li>Você vai prestar a 2ª fase da OAB em breve e precisa de método focado</li>
+                        <li>Quer aprender técnicas específicas de identificação e estruturação de peças</li>
+                        <li>Busca um método prático alinhado aos critérios de correção da FGV</li>
+                        <li>Prefere preparação objetiva ao invés de conteúdo genérico</li>
+                        <li>Quer maximizar sua pontuação com estratégias testadas</li>
+                    </ul>
+                </div>
+                <div class="for-who-card not-for">
+                    <h3>❌ Não É Para Você Se:</h3>
+                    <ul>
+                        <li>Você ainda não passou na 1ª fase do exame da OAB</li>
+                        <li>Busca apenas teoria de Direito Constitucional sem foco em peças</li>
+                        <li>Não tem disciplina para acompanhar um método estruturado</li>
+                        <li>Procura uma solução mágica sem esforço de estudo</li>
+                        <li>Quer preparação para outras áreas além de Constitucional</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>O Que Você Vai Conquistar</h2>
+                <p>Resultados práticos que vão transformar sua preparação para a 2ª fase</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="benefit-icon">🎯</span>
+                    <h3>Identificação Rápida de Peças</h3>
+                    <p>Domine técnicas para reconhecer rapidamente qual peça a questão está pedindo e o que a banca espera de você.</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">📝</span>
+                    <h3>Estruturas Prontas no Padrão FGV</h3>
+                    <p>Tenha em mãos modelos de estruturação alinhados ao espelho de correção oficial, economizando tempo precioso na prova.</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">⚡</span>
+                    <h3>Método de Redação Otimizado</h3>
+                    <p>Aprenda a escrever de forma clara, objetiva e estratégica para garantir o máximo de pontos possível.</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">📊</span>
+                    <h3>Foco no Que Realmente Importa</h3>
+                    <p>Estude apenas o que é cobrado na 2ª fase, sem dispersão com conteúdo irrelevante para sua aprovação.</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">🔄</span>
+                    <h3>Preparação Específica e Direcionada</h3>
+                    <p>Método desenvolvido exclusivamente para Direito Constitucional, respeitando as peculiaridades dessa área.</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">💪</span>
+                    <h3>Confiança Para o Dia da Prova</h3>
+                    <p>Chegue no exame sabendo exatamente como estruturar sua resposta e o que a banca quer ver no seu texto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>O Que Está Incluso no Curso</h2>
+                <p>Todo o conteúdo que você precisa para dominar a 2ª fase de Constitucional</p>
+            </div>
+            <div class="stack-value">
+                <div class="stack-item">
+                    <h4>Módulo 1: Fundamentos da 2ª Fase em Constitucional</h4>
+                    <p>Entenda a estrutura do exame, critérios de correção da FGV e como o espelho de correção funciona na prática.</p>
+                </div>
+                <div class="stack-item">
+                    <h4>Módulo 2: Técnicas de Identificação de Peças</h4>
+                    <p>Método passo a passo para reconhecer qual tipo de peça profissional está sendo solicitado pela questão.</p>
+                </div>
+                <div class="stack-item">
+                    <h4>Módulo 3: Estruturas Prontas Alinhadas ao Padrão FGV</h4>
+                    <p>Modelos práticos de estruturação para cada tipo de peça cobrada, prontos para usar no dia da prova.</p>
+                </div>
+                <div class="stack-item">
+                    <h4>Módulo 4: Método de Redação Otimizado</h4>
+                    <p>Técnicas de escrita estratégica para maximizar pontuação, evitar erros comuns e ganhar tempo na prova.</p>
+                </div>
+                <div class="stack-item">
+                    <h4>Módulo 5: Resolução de Peças Reais de Exames Anteriores</h4>
+                    <p>Análise detalhada de questões passadas aplicando todo o método ensinado no curso.</p>
+                </div>
+                <div class="stack-item">
+                    <h4>Material de Apoio e Exercícios Práticos</h4>
+                    <p>PDFs, checklists e exercícios para você fixar o conteúdo e treinar antes da prova.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Suas Dúvidas, Respondidas</h2>
+            </div>
+            <div class="objections">
+                <div class="objection-item">
+                    <h3>"Não tenho tempo suficiente para fazer mais um curso"</h3>
+                    <p>Este não é um curso genérico e extenso de Direito Constitucional. É um método focado exclusivamente na 2ª fase, com aulas diretas e objetivas que ensinam exatamente o que você precisa saber para estruturar e escrever suas peças. Você economiza tempo ao estudar apenas o que realmente será cobrado, sem rodeios ou teoria desnecessária.</p>
+                </div>
+                <div class="objection-item">
+                    <h3>"Já tentei outros cursos e não funcionou"</h3>
+                    <p>A diferença está no foco. Enquanto a maioria dos cursos ensina teoria de Constitucional, este método é voltado especificamente para a habilidade prática de escrever peças no formato esperado pela FGV. Você aprende técnicas de identificação, estruturas prontas e estratégias de redação alinhadas ao espelho de correção oficial — algo que cursos genéricos não entregam.</p>
+                </div>
+                <div class="objection-item">
+                    <h3>"Não sei se esse método vai funcionar para mim"</h3>
+                    <p>O método foi desenvolvido a partir da análise dos critérios de correção reais da FGV e já ajudou candidatos a estruturarem suas respostas de forma eficiente. Se você já passou na 1ª fase e tem o conhecimento teórico básico, o que falta é saber como organizar esse conhecimento na forma de peça profissional — e é exatamente isso que o curso ensina, passo a passo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="guarantee">
+                <div class="guarantee-icon">🔒</div>
+                <h3>Compra 100% Segura</h3>
+                <p>Sua compra é protegida pela Hotmart, a maior plataforma de produtos digitais da América Latina. Pagamento seguro, dados criptografados e acesso imediato após a confirmação.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Perguntas Frequentes</h2>
+            </div>
+            <div class="faq">
+                <div class="faq-item">
+                    <h4>Como eu acesso o curso após a compra?</h4>
+                    <p>Assim que sua compra for confirmada, você receberá um e-mail da Hotmart com os dados de acesso à plataforma. O curso fica disponível 24 horas por dia para você assistir no seu ritmo.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>O curso serve para qual área da 2ª fase?</h4>
+                    <p>Este curso é específico para a área de Direito Constitucional da 2ª fase do exame da OAB. Todo o conteúdo, estruturas e técnicas são voltados exclusivamente para essa disciplina.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Por quanto tempo terei acesso ao conteúdo?</h4>
+                    <p>O acesso ao curso fica disponível conforme os termos definidos pelo produtor na plataforma Hotmart. Todas as informações sobre prazo de acesso estão disponíveis na página de checkout.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Posso parcelar o pagamento?</h4>
+                    <p>Sim! Você pode parcelar sua compra em até 12x de R$ 85,83 no cartão de crédito. Também é possível pagar à vista via PIX ou boleto bancário.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Tenho suporte caso tenha dúvidas?</h4>
+                    <p>Sim. Você terá acesso ao suporte do curso conforme as condições estabelecidas pelo produtor. Dúvidas técnicas sobre acesso à plataforma podem ser resolvidas diretamente com a Hotmart.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-final">
+        <div class="container">
+            <h2>O Próximo Exame da OAB Não Espera</h2>
+            <p>Cada dia de preparação conta. Comece agora sua preparação focada em Direito Constitucional com método prático e alinhado aos critérios da FGV.</p>
+            <div class="price-tag">
+                <div class="price-value">R$ 829,90</div>
+                <div class="price-installment">ou 12x de R$ 85,83</div>
+            </div>
+            <div class="cta-group">
+                <a href="https://go.hotmart.com/A107736612D?dp=1" class="btn btn-primary" data-track="cta-principal">Garantir Minha Vaga Agora</a>
+            </div>
+            <p class="microcopy">Acesso liberado imediatamente após a confirmação da compra</p>
+        </div>
+    </section>
+
+    <div class="mobile-cta-bar">
+        <a href="https://go.hotmart.com/A107736612D?dp=1" class="btn btn-primary" data-track="cta-principal">Garantir Minha Vaga</a>
+    </div>
+</body>
+</html>
